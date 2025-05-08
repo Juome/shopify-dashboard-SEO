@@ -1,0 +1,45 @@
+# Dépendances (n’importe où dans le projet)
+**/node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Tests
+**/coverage/
+
+# Build Next.js
+**/.next/
+**/out/
+
+# Build production
+**/build/
+
+# Fichiers système et certificats
+.DS_Store
+*.pem
+
+# Logs de debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Variables d’environnement privées
+**/.env*
+!.env.example
+
+# Vercel
+**/.vercel/
+
+# TypeScript
+*.tsbuildinfo
+**/next-env.d.ts
+
+# Configs IDE (VSCode, JetBrains…)
+.vscode/
+.idea/
+**/readme.md
