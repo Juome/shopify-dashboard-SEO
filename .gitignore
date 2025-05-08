@@ -42,4 +42,4 @@ yarn-error.log*
 # Configs IDE (VSCode, JetBrains…)
 .vscode/
 .idea/
-**/readme.md
+/readme.md
