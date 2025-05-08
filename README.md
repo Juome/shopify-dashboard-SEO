@@ -46,7 +46,7 @@ ChatGPT :
 > 1. Lit ce README.md pour détecter la **Phase** courante.  
 > 2. Reprend les **Étapes** et **Sous-étapes** associées à cette phase.  
 > 3. Avant chaque action, génère un plan en 🚀 **Étapes** et 💡 **Astuces**.  
-> 4. À la fin de chaque étape, rappelle :
+> 4. À la fin de chaque étape, verifie que gitignore est bien remplie puis rappelle :
 >    ```bash
 >    git add .
 >    git commit -m "feat: <description>"
