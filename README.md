@@ -59,9 +59,9 @@ npm run dev
 | **1.1.1** | Initialisation du projet (Next.js, TypeScript, App Router, Tailwind, Turbopack…) | [#12](…) | ✅ |
 | **1.1.2** | Configuration des alias (`baseUrl: "./src"`, `@components/*`,…)                  | [#15](…) | ✅ |
 | **1.1.3** | Setup tests (next/jest, jest.setup.ts, RTL, mocks, smoke test)                   | [#18](…) | ✅ |
-| **1.1.4** | Auth Shopify (jeton permanent, Credentials Provider, routes API, .env)           | [#22](…) | ☑️ |
-| **1.1.5a**| Provider & login UI – Credentials Provider (`Providers`, SessionProvider, `/login`) | [#25](…) | ⬜️ |
-| **1.1.5b**| Provider & login UI – OAuth Provider (Google/GitHub, boutons `signIn('google')`, etc.) | [#26](…) | ⬜️ |
+| **1.1.4** | Auth Shopify (jeton permanent, Credentials Provider, routes API, .env)           | [#22](…) | ✅ |
+| **1.1.5a**| Provider & login UI – Credentials Provider (`Providers`, SessionProvider, `/login`) | [#25](…) | ✅ |
+| **1.1.5b**| Provider & login UI – OAuth Provider (Google/GitHub, boutons `signIn('google')`, etc.) | [#26](…) | ☑️ |
 | **1.1.6** | Menu de navigation (`<Nav>`, liens selon session)                                | [#27](…) | ⬜️ |
 | **1.1.7** | Thèmes dynamiques (next-themes, toggle, persistance)                             | [#30](…) | ⬜️ |
 
