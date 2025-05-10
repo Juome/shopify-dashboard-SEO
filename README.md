@@ -56,15 +56,15 @@ npm run dev
 
 | Sous-phase | Tâches                                                                           | Réf.     | Statut |
 | :--------: | -------------------------------------------------------------------------------- | -------- | :----: |
-|  **1.1.1** | Initialisation du projet (Next.js, TypeScript, App Router, Tailwind, Turbopack…) | [#12](…) |    ✅   |
-|  **1.1.2** | Configuration des alias (`baseUrl: "./src"`, `@components/*`,…)                  | [#15](…) |    ✅   |
-|  **1.1.3** | Setup tests (next/jest, jest.setup.ts, RTL, mocks, smoke test)                   | [#18](…) |    ✅   |
-|  **1.1.4** | Auth Shopify (next-auth custom, routes API, .env)                                | [#22](…) |   ☑️   |
-|  **1.1.5** | Provider & login UI (`Providers`, SessionProvider, `/login`)                     | [#25](…) |   ⬜️   |
-|  **1.1.6** | Menu de navigation (`<Nav>`, liens selon session)                                | [#27](…) |   ⬜️   |
-|  **1.1.7** | Thèmes dynamiques (next-themes, toggle, persistance)                             | [#30](…) |   ⬜️   |
+| **1.1.1** | Initialisation du projet (Next.js, TypeScript, App Router, Tailwind, Turbopack…) | [#12](…) | ✅ |
+| **1.1.2** | Configuration des alias (`baseUrl: "./src"`, `@components/*`,…)                  | [#15](…) | ✅ |
+| **1.1.3** | Setup tests (next/jest, jest.setup.ts, RTL, mocks, smoke test)                   | [#18](…) | ✅ |
+| **1.1.4** | Auth Shopify (jeton permanent, Credentials Provider, routes API, .env)           | [#22](…) | ☑️ |
+| **1.1.5a**| Provider & login UI – Credentials Provider (`Providers`, SessionProvider, `/login`) | [#25](…) | ⬜️ |
+| **1.1.5b**| Provider & login UI – OAuth Provider (Google/GitHub, boutons `signIn('google')`, etc.) | [#26](…) | ⬜️ |
+| **1.1.6** | Menu de navigation (`<Nav>`, liens selon session)                                | [#27](…) | ⬜️ |
+| **1.1.7** | Thèmes dynamiques (next-themes, toggle, persistance)                             | [#30](…) | ⬜️ |
 
----
 
 ### Phase 1.2 – UI i18n FR, nettoyage i18next
 
@@ -76,7 +76,58 @@ npm run dev
 |  **1.2.4** | Adaptation des composants avec `useTranslation()` | [#34](…) |   ⬜️   |
 |  **1.2.5** | Nettoyage clés/config obsolètes                   | [#35](…) |   ⬜️   |
 
-*(… autres phases au même format …)*
+### Phase 1.3 – Nouveaux indicateurs (SerpApi, PSI, GSC)
+
+| Sous-phase | Tâches                                              | Réf.     | Statut |
+|:----------:|-----------------------------------------------------|----------|:------:|
+| **1.3.1**  | Intégration SerpApi (récupération & affichage SERP) | [#36](…) | ⬜️      |
+| **1.3.2**  | Intégration PageSpeed Insights (PSI)                | [#37](…) | ⬜️      |
+| **1.3.3**  | Intégration Google Search Console (GSC)             | [#38](…) | ⬜️      |
+| **1.3.4**  | UI / Charts pour chaque indicateur                  | [#39](…) | ⬜️      |
+
+---
+
+### Phase 1.4 – Dashboard (table, graphiques, filtres)
+
+| Sous-phase | Tâches                                                        | Réf.     | Statut |
+|:----------:|---------------------------------------------------------------|----------|:------:|
+| **1.4.1**  | Composant `Table` – affichage des données                     | [#40](…) | ⬜️      |
+| **1.4.2**  | Graphiques (Recharts ou Chart.js)                             | [#41](…) | ⬜️      |
+| **1.4.3**  | Filtres globaux (date, source, etc.)                          | [#42](…) | ⬜️      |
+| **1.4.4**  | Pagination & tri                                              | [#43](…) | ⬜️      |
+
+---
+
+### Phase 1.5 – IA SEO (suggestions ChatGPT) + push Shopify
+
+| Sous-phase | Tâches                                                      | Réf.     | Statut |
+|:----------:|-------------------------------------------------------------|----------|:------:|
+| **1.5.1**  | Setup de l’API ChatGPT (clé, wrapper)                       | [#44](…) | ⬜️      |
+| **1.5.2**  | Composant `SeoSuggestions` (input URL / keyword)            | [#45](…) | ⬜️      |
+| **1.5.3**  | Affichage et édition des suggestions                        | [#46](…) | ⬜️      |
+| **1.5.4**  | Push direct vers Shopify via Admin API                      | [#47](…) | ⬜️      |
+
+---
+
+### Phase 2.0 – Tests & CI/CD
+
+| Sous-phase | Tâches                                              | Réf.     | Statut |
+|:----------:|-----------------------------------------------------|----------|:------:|
+| **2.0.1**  | Couverture unitaire & d’intégration                 | [#48](…) | ⬜️      |
+| **2.0.2**  | GitHub Actions – lint, test, build                  | [#49](…) | ⬜️      |
+| **2.0.3**  | Déploiement continu (preview + production)          | [#50](…) | ⬜️      |
+
+---
+
+### Phase 3.0 – Déploiement & Monitoring
+
+| Sous-phase | Tâches                                              | Réf.     | Statut |
+|:----------:|-----------------------------------------------------|----------|:------:|
+| **3.0.1**  | Déploiement sur Vercel (ou infrastructure cible)    | [#51](…) | ⬜️      |
+| **3.0.2**  | Configuration domaine & SSL                         | [#52](…) | ⬜️      |
+| **3.0.3**  | Monitoring (Sentry, LogRocket…)                     | [#53](…) | ⬜️      |
+| **3.0.4**  | Alerting (email / Slack)                            | [#54](…) | ⬜️      |
+
 
 ---
 

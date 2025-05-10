@@ -1,36 +1,48 @@
-// src/app/api/auth/[...nextauth]/route.ts
-import NextAuth, { NextAuthOptions } from 'next-auth'
+import NextAuth, { type NextAuthOptions } from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
+import CredentialsProvider from 'next-auth/providers/credentials'
+
+// 1. Lire AUTHORIZED_EMAILS et transformer en tableau
+const authorizedEmails = process.env.AUTHORIZED_EMAILS
+  ? process.env.AUTHORIZED_EMAILS.split(',').map(e => e.trim().toLowerCase())
+  : []
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    {
-      id: 'shopify',
-      name: 'Shopify',
-      type: 'oauth',
-      version: '2.0',
-      // point d’entrée pour autoriser l’accès
-      authorization: {
-        url: `https://${process.env.SHOPIFY_STORE_DOMAIN}/admin/oauth/authorize`,
-        params: { scope: 'read_products write_products' },
-      },
-      // URL pour échanger le code contre un access token
-      token: `https://${process.env.SHOPIFY_STORE_DOMAIN}/admin/oauth/access_token`,
-      // URL pour récupérer les infos du shop (ici l’objet shop)
-      userinfo: `https://${process.env.SHOPIFY_STORE_DOMAIN}/admin/api/2023-10/shop.json`,
-      // Mapper la réponse de Shopify dans le profile utilisateur
-      async profile(response: any) {
-        const shop = response.shop ?? {}
-        return {
-          id: shop.id?.toString() || shop.myshopify_domain,
-          name: shop.name,
-          email: undefined,      // Shopify n’expose pas l’email du shop
-          image: undefined,
-        }
-      },
-    },
+    CredentialsProvider({
+      name: 'Shopify API Token',
+      credentials: { token: { label: 'API Token', type: 'password' } },
+      async authorize(creds) {
+        if (!creds?.token || creds.token !== process.env.SHOPIFY_ACCESS_TOKEN) return null
+        return { id: creds.token, name: 'Shopify Admin' }
+      }
+    }),
+    GoogleProvider({
+      clientId:   process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: { params: { prompt: 'select_account' } }
+    })
   ],
+  session: { strategy: 'jwt' as const },
+  callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === 'google') {
+        // 2. Vérifier si user.email (minuscules) est dans authorizedEmails
+        return authorizedEmails.includes(user.email!.toLowerCase())
+      }
+      return true
+    },
+    async jwt({ token, user }) {
+      if (user) token.shopifyToken = user.id
+      return token
+    },
+    async session({ session, token }) {
+      ;(session as any).shopifyToken = token.shopifyToken
+      return session
+    }
+  },
   secret: process.env.NEXTAUTH_SECRET,
-  session: { strategy: 'jwt' },
+  pages: { error: '/auth/error' }
 }
 
 const handler = NextAuth(authOptions)

@@ -7,18 +7,19 @@ export default function LoginPage() {
   const router = useRouter()
 
   if (session) {
-    router.push('/') // déjà loggé, redirige à la home
+    router.push('/')
     return null
   }
 
   return (
     <main className="flex items-center justify-center min-h-screen">
       <button
-        className="px-6 py-2 bg-blue-600 text-white rounded-lg"
-        onClick={() => signIn('shopify')}
+        onClick={() => signIn('google')}
+        className="mb-4 bg-red-500 text-white px-4 py-2 rounded"
       >
-        🔒 Se connecter à Shopify
+        Se connecter avec Google
       </button>
+      {/* … ton formulaire Credentials existant … */}
     </main>
   )
 }
